@@ -3,7 +3,7 @@ import string
 def rot13(s):
     ans = ''
     for i in s:
-        if i.isdigit():
+        if not i.isalpha():
             ans += i
         else:
             check = ord(i)
@@ -19,7 +19,7 @@ def rot13(s):
 def rot5(s):
     ans = ''
     for i in s:
-        if i.isalpha():
+        if not i.isdigit():
             ans += i
             continue
         check = ord(i)
@@ -47,6 +47,7 @@ def rot47(s):
 
 
 def get_rot(s,key):
+    key = int(key)
     if key == 5:
         #print('rot5 = ', rot5(s))
         return rot5(s)
@@ -59,3 +60,8 @@ def get_rot(s,key):
     if key == 13:
         #print('rot13 = ', rot13(s))
         return rot13(s)
+
+if __name__ == '__main__':
+    s = input('字符串:')
+    key = input('rot几?')
+    print(get_rot(s,key))
