@@ -3,6 +3,7 @@ import string
 import os
 import html
 from my_base64 import *
+import base64
 from bacon import *
 from qwe import *
 from caesar import *
@@ -21,25 +22,44 @@ def head_show():
     print("|   my program da you welcome!!!!               |")
     print("-------------------------------------------------")
 
+def handle_num():
+    x = input("password please input:")
+    if x == "0":
+        return "exit"
+    elif x.isdigit():
+        return x
+    else:
+        print('your input is wrong please re-input!!!')
+        os.system('cls')
+    pass
 def select():
     while(1):
-        print("PART ONE : password　パスワード\n")
+        print("PART ONE : 解密　パスワード\n")
         #print("11 : morse\n12 : base64 \n13 : url\n14 : bacon\n15 : Railfence\n16 : QWE password\n17 : N--->ascii\n18 : caesar\n19 : rot\n")
         print('please input "1" to enter password moudle')
         print("-------------------------------------------------\n")
-        print("PART TWO : function　色々なファンクション\n")
+        print("PART TWO : 小功能　色々なファンクション\n")
         #print("21 : kill the ' '\n22 : upper and lowercase\n23 : reverse  123 --- >321\n")
         print('please input "2" to enter password moudle')
+        print("-------------------------------------------------\n")
+        print("PART THREE : 加密\n")
+        print('please input "3" to enter password moudle')
         print("-------------------------------------------------\n")
         print("0 : exit\n")
         n = input("数字を入力してください / please input the number : ")
         n = int(n)
         if n == 1:
             os.system('cls')
-            print("PART ONE : password　パスワード\n")
-            print("11 : morse\n12 : base64 \n13 : url\n14 : bacon\n15 : Railfence\n16 : QWE password\n17 : N--->ascii\n18 : caesar\n19 : rot\n110：URL")
+            print("PART ONE : 解密　パスワード\n")
+            print("11 : morse\n12 : base64 \n13 : url\n14 : bacon\n15 : Railfence\n16 : QWE password\n17 : N--->ascii\n18 : caesar\n19 : rot\n110 : URL")
+            print("111 : 维吉尼亚")
             print('0 : return to look other options')
             while(1):
+                x = handle_num()
+                if x == "exit":
+                    break
+                return x
+                '''    
                 x = input("password please input:")
                 if x == "0":
                     break
@@ -48,21 +68,28 @@ def select():
                 else:
                     print('your input is wrong please re-input!!!')
                     os.system('cls')
+                '''
         if n == 2:
             os.system('cls')
-            print("PART TWO : function　色々なファンクション\n")
+            print("PART TWO : 小功能　色々なファンクション\n")
             print(
                 "21 : kill the ' '\n22 : upper and lowercase\n23 : reverse  123 --- >321\n24 : convert the string")
             print('0 : return to look other options')
             while(1):
-                x = input("password please input:")
-                if x == '0':
+                x = handle_num()
+                if x == "exit":
                     break
-                elif x.isdigit() and x[0] == '2':
-                    return x
-                else:
-                    print('your input is wrong please re-input!!!')
-                    os.system('cls')
+                return x
+        if n == 3:
+            os.system('cls')
+            print("PART THREE : 加密\n")
+            print("31 : 字符串转16进制\n32 : 字符串转base组编码")
+            print('0 : return to look other options')
+            while(1):
+                x = handle_num()
+                if x == "exit":
+                    break
+                return x
         if n == 0:
             return 0
         os.system('cls')
@@ -204,9 +231,36 @@ def handle(n):
             return('kenkan decide is :' + kenkan())
         except:
             return ("ERROR string")
+    if n == 31:
+        s = input('please input the string :')
+        ans = ''
+        for i in s:
+            ans += str(hex(ord(i)))[2:]
+        ans = '0x'+ans
+        return ("字符串转16进制得 :"+ans)
+    if n == 32:
+        s = input('please input the string :')
+        while 1:
+            try:    
+                num = int(input('64?32?16?:'))
+                break
+            except:
+                print("输入有误")
+                os.system('cls')
+        if num == 64:
+            ans = base64.b64encode(s.encode('utf-8')).decode('utf-8')
+        elif num == 32:
+            ans = base64.b32encode(s.encode('utf-8')).decode('utf-8')
+        elif num == 16:
+            ans = base64.b16encode(s.encode('utf-8')).decode('utf-8')
+        else:
+            ans = "ERROR_Stirng"
+        return ("base加密得 :"+ans)
 
 
-def main():
+
+
+def main(f):
     n = 718
     ans = 'first is NONE...'
     while(n != 0):
@@ -223,11 +277,14 @@ def main():
             print('thanks for using.closed by your self or autoclose before 5s ')
             break
         ans = handle(n)
+        f.write(ans+'\n')
 
     print("Author    : AHGAXY_MZH")
     print("Time      : 2019.9")
     print("Version   : 1.2.2")
+
+if __name__ == '__main__':
+    f = open("log.txt","w",encoding="utf-8")
+    main(f)
+    f.close()
     time.sleep(5)
-
-
-main()

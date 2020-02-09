@@ -16,5 +16,6 @@ def m_url(s):
     return ans
 if __name__ == "__main__":
     s = input("请输入你的url转码(仅限百分号加十六进制数字如:%32)")
+    s = s.lower()
     k = m_url(s)
     print(k)
