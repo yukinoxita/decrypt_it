@@ -1,0 +1,21 @@
+{
+	"Author": "yukki",
+	"Version": "1.3.0",
+	"Function": [{
+		"Decrypt": ["morse", "base64", "html", "bacon", "Railfence", "QWE password", "N进制ascii", "caesar", "rot", "URL转码","维吉尼亚"]},
+		{"Encrypt": ["string to hex", "string to base*"]},
+		{"Function": ["kill space", "upper or lower", "reverse (123 --> 321)", "convert some char(abac --> bbbc)"]
+	}],
+	"Convert_Decrypt" :
+	[
+	    {"morse" : 11,"base64" : 12,"html" : 13,"bacon" : 14,"Railfence":15,"QWE password":16,"N进制ascii":17,"caesar":18,"rot":19,"URL转码":110,"维吉尼亚":111}
+	],
+	"Convert_Encrypt" :
+	[
+	    {"string to hex":31,"string to base*":32}
+	],
+	"Convert_Function":
+	[
+	{"kill space":21,"upper or lower":22,"reverse (123 --> 321)":23,"convert some char(abac --> bbbc)":24}
+	]
+}

@@ -1,5 +1,6 @@
 import string
 def get_caesar(s):
+    anss = '\n'
     for i in range(1, 26):
         ans = ''
         for j in s:
@@ -15,4 +16,7 @@ def get_caesar(s):
                     if check > ord('z'):
                         check -= 26
                 ans += chr(check)
+        anss += ans
+        anss += '\n'
         print(ans)
+    return anss

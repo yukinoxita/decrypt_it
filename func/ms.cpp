@@ -102,7 +102,7 @@ int main()
             tail=i-1;
             sagasu();
             head=i+1;
-        }   
+        }
     }
     return 0;
 }
