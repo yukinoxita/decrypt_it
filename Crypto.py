@@ -66,7 +66,10 @@ class handle:
             else :
                 print("先输入字符串，再按下一个空格，然后输入你的密钥(例如5)，再按空格即可得出答案")
                 try:
-                    os.system('./wzhalan.exe')
+                    p = subprocess.Popen('./wzhalan.exe',shell=True,stdout=subprocess.PIPE)
+                    #p = subprocess.Popen('./wzhalan.exe') # 这样的会直接输出
+                    stdout,stderr = p.communicate()
+                    self.status = 'wzhanlan decode : ' + stdout.rstrip().decode('utf-8')
                 except:
                     self.status = 'ERROR string'
         elif n == 16:
